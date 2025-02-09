@@ -21,9 +21,6 @@ function displayScore(humanScore, computerScore){
 };
 
 function playRound(humanSelection, computerSelection){
-    alert(`You Pick: ${humanSelection}`);
-    alert(`My Pick: ${computerSelection}`);
-
     if (humanSelection === computerSelection){
         alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nIt's a tie! No one wins`);
         return "tie"
