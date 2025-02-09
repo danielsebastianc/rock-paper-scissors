@@ -17,33 +17,33 @@ function getHumanChoice(){
 };
 
 function displayScore(humanScore, computerScore){
-    return console.log(`The score is You: ${humanScore}, Me: ${computerScore}`)
+    return alert(`The score is You: ${humanScore}, Me: ${computerScore}`)
 };
 
 function playRound(humanSelection, computerSelection){
-    console.log(`You Pick: ${humanSelection}`);
-    console.log(`My Pick: ${computerSelection}`);
+    alert(`You Pick: ${humanSelection}`);
+    alert(`My Pick: ${computerSelection}`);
 
     if (humanSelection === computerSelection){
-        console.log("It's a tie! No one wins");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nIt's a tie! No one wins`);
         return "tie"
     }else if (humanSelection === "rock" && computerSelection === "scissors" ){
-        console.log("You Won! Rock beats Scissors");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Won! Rock beats Scissors`);
         return "human"
     }else if (humanSelection === "rock" && computerSelection === "paper"){
-        console.log("You Lose! Paper beats Rock");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Paper beats Rock`);
         return "comp"
     }else if (humanSelection === "scissors" && computerSelection === "paper"){
-        console.log("You Won! Scissors beats Paper");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Won! Scissors beats Paper`);
         return "human"
     }else if (humanSelection === "scissors" && computerSelection === "rock"){
-        console.log("You Lose! Rock beats Scissors");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Rock beats Scissors`);
         return "comp"
     }else if (humanSelection === "paper" && computerSelection === "rock"){
-        console.log("You Won! Paper beats Rock");
+        alert(`You Won! Paper beats Rock`);
         return "human"
     }else if (humanSelection === "paper" && computerSelection === "scissors"){
-        console.log("You Lose! Scissors beats Paper");
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Scissors beats Paper`);
         return "comp"
     }
 };
@@ -68,7 +68,7 @@ function playGame(rounds){
         round ++;
     }while(round <= rounds);
 
-    console.log(`Game Ends! Final Score is You: ${humanScore}, Me: ${computerScore}`)
+    alert(`Game Ends! Final Score is You: ${humanScore}, Me: ${computerScore}`)
 }
 
 
