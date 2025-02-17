@@ -44,29 +44,3 @@ function playRound(humanSelection, computerSelection){
         return "comp"
     }
 };
-
-function playGame(rounds){
-    let humanScore = 0;
-    let computerScore = 0;
-    let round = 1
-    
-    do{
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        const result = playRound(humanSelection, computerSelection);
-    
-        if(result === "human"){
-            humanScore += 1;
-        }else if(result === "comp"){
-            computerScore += 1;
-        }
-        
-        displayScore(humanScore, computerScore);
-        round ++;
-    }while(round <= rounds);
-
-    alert(`Game Ends! Final Score is You: ${humanScore}, Me: ${computerScore}`)
-}
-
-
-playGame(5)
