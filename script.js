@@ -9,13 +9,6 @@ function getComputerChoice(){
     }
 };
 
-function getHumanChoice(){
-    const choice = prompt(
-        "Let's play rock paper scissors! Please type in what hand do you want to play with"
-    )
-    return choice.toLowerCase();
-};
-
 function displayScore(humanScore, computerScore){
     return alert(`The score is You: ${humanScore}, Me: ${computerScore}`)
 };
@@ -44,3 +37,10 @@ function playRound(humanSelection, computerSelection){
         return "comp"
     }
 };
+
+const buttons = document.querySelectorAll("button")
+buttons.forEach( button => {
+    button.addEventListener("click", ()=>{
+        console.log(button.value)
+    })
+});
