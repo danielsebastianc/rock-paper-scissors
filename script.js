@@ -30,7 +30,7 @@ function playRound(humanSelection, computerSelection){
         alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Rock beats Scissors`);
         return "comp"
     }else if (humanSelection === "paper" && computerSelection === "rock"){
-        alert(`You Won! Paper beats Rock`);
+        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Won! Paper beats Rock`);
         return "human"
     }else if (humanSelection === "paper" && computerSelection === "scissors"){
         alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Scissors beats Paper`);
@@ -41,6 +41,7 @@ function playRound(humanSelection, computerSelection){
 const buttons = document.querySelectorAll("button")
 buttons.forEach( button => {
     button.addEventListener("click", ()=>{
-        console.log(button.value)
+        const computerChoice = getComputerChoice()
+        playRound( button.value, computerChoice)
     })
 });
