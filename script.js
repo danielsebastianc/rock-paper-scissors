@@ -9,64 +9,57 @@ function getComputerChoice(){
     }
 };
 
-function getHumanChoice(){
-    const choice = prompt(
-        "Let's play rock paper scissors! Please type in what hand do you want to play with"
-    )
-    return choice.toLowerCase();
-};
-
-function displayScore(humanScore, computerScore){
-    return alert(`The score is You: ${humanScore}, Me: ${computerScore}`)
-};
-
 function playRound(humanSelection, computerSelection){
+    const result = document.querySelector(".result")
     if (humanSelection === computerSelection){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nIt's a tie! No one wins`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>It's a tie! No one wins`
         return "tie"
     }else if (humanSelection === "rock" && computerSelection === "scissors" ){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Won! Rock beats Scissors`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Won! Rock beats Scissors`
         return "human"
     }else if (humanSelection === "rock" && computerSelection === "paper"){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Paper beats Rock`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Lose! Paper beats Rock`
         return "comp"
     }else if (humanSelection === "scissors" && computerSelection === "paper"){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Won! Scissors beats Paper`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Won! Scissors beats Paper`
         return "human"
     }else if (humanSelection === "scissors" && computerSelection === "rock"){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Rock beats Scissors`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Lose! Rock beats Scissors`
         return "comp"
     }else if (humanSelection === "paper" && computerSelection === "rock"){
-        alert(`You Won! Paper beats Rock`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Won! Paper beats Rock`
         return "human"
     }else if (humanSelection === "paper" && computerSelection === "scissors"){
-        alert(`You Pick: ${humanSelection}\nMy Pick: ${computerSelection}\nYou Lose! Scissors beats Paper`);
+        result.innerHTML = `You Pick: ${humanSelection}<br>My Pick: ${computerSelection}<br>You Lose! Scissors beats Paper`
         return "comp"
     }
 };
 
-function playGame(rounds){
-    let humanScore = 0;
-    let computerScore = 0;
-    let round = 1
-    
-    do{
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        const result = playRound(humanSelection, computerSelection);
-    
-        if(result === "human"){
-            humanScore += 1;
-        }else if(result === "comp"){
-            computerScore += 1;
+const buttons = document.querySelectorAll("button")
+const score = document.querySelector(".score")
+const winner = document.querySelector(".winner")
+let humanScore = 0
+let compScore = 0
+buttons.forEach( button => {
+    button.addEventListener("click", ()=>{
+        winner.textContent = ""
+        const computerChoice = getComputerChoice()
+        const result = playRound( button.value, computerChoice)
+        if(result === "comp"){
+            compScore++
+        }else if(result === "human"){
+            humanScore++
         }
-        
-        displayScore(humanScore, computerScore);
-        round ++;
-    }while(round <= rounds);
+        score.textContent = `You: ${humanScore} Me: ${compScore}`
 
-    alert(`Game Ends! Final Score is You: ${humanScore}, Me: ${computerScore}`)
-}
-
-
-playGame(5)
+        if(humanScore == 5 || compScore == 5){
+            if(humanScore == 5){
+                winner.textContent = `YOU WON! LETS PLAY AGAIN!`
+            }else{
+                winner.textContent = `I WON! LETS PLAY AGAIN!`
+            }
+            humanScore = 0
+            compScore = 0
+        }
+    })
+});

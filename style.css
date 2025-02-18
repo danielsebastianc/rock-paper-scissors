@@ -1,0 +1,9 @@
+.container {
+    text-align: center;
+}
+
+.result,
+.score,
+.winner {
+    margin-top: 36px;
+}
